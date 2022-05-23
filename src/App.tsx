@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { Calendar } from "./Calendar";
 import styled from "styled-components";
 
-type MonthId =
+export type MonthId =
   | "jan"
   | "feb"
   | "mar"
@@ -82,28 +82,19 @@ const App = () => {
     }
   };
 
-  const moveGoal = (sourceId: string, targetId: string) => {
-    const source = Object.values(months).find((month) => month.id === sourceId);
-    const target = Object.values(months).find((month) => month.id === targetId);
-
-    if (source && target) {
-      setMonths({
-        ...months,
-        [targetId]: { ...target, goal: source.goal },
-        [sourceId]: { ...source, goal: target.goal },
-      });
-    }
+  const moveGoal = (sourceId: MonthId, targetId: MonthId) => {
+    setMonths({
+      ...months,
+      [targetId]: { ...months[targetId], goal: months[sourceId].goal },
+      [sourceId]: { ...months[sourceId], goal: months[targetId].goal },
+    });
   };
 
-  const removeGoal = (id: string) => {
-    const month = Object.values(months).find((month) => month.id === id);
-
-    if (month) {
-      setMonths({
-        ...months,
-        [id]: { ...month, goal: "" },
-      });
-    }
+  const removeGoal = (id: MonthId) => {
+    setMonths({
+      ...months,
+      [id]: { ...months[id], goal: "" },
+    });
   };
 
   const isFull = () =>

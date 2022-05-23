@@ -2,22 +2,22 @@ import { KonvaEventObject } from "konva/lib/Node";
 import { useRef, useState } from "react";
 import Konva from "konva";
 import { Stage, Layer, Arc, Text, Group } from "react-konva";
-import { Month } from "./App";
+import { Month, MonthId } from "./App";
 
 const degToRad = (deg: number): number => deg * (Math.PI / 180.0);
 
 const isH2Month = (index: number) => index > 5;
 
 interface Dragging {
-  id: string;
+  id: MonthId;
   startX: number;
   startY: number;
 }
 
 interface CalendarProps {
   months: Month[];
-  onMoveGoal: (source: string, target: string) => void;
-  onRemoveGoal: (id: string) => void;
+  onMoveGoal: (sourceId: MonthId, targetId: MonthId) => void;
+  onRemoveGoal: (id: MonthId) => void;
 }
 
 const STAGE_SIZE = 600;
@@ -36,7 +36,7 @@ export const Calendar = ({
   const helperLayerRef = useRef<Konva.Layer>(null);
   const [draggingGoal, setDraggingGoal] = useState<Dragging | undefined>();
 
-  const startDrag = (e: KonvaEventObject<DragEvent>, id: string) => {
+  const startDrag = (e: KonvaEventObject<DragEvent>, id: MonthId) => {
     if (helperLayerRef) {
       e.target.moveTo(helperLayerRef.current);
     }
