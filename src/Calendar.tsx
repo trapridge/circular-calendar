@@ -50,7 +50,7 @@ export const Calendar = ({
       e.currentTarget.moveTo(mainLayerRef.current);
       const intersection = mainLayerRef.current.getIntersection(position);
       if (draggingGoal) {
-        if (intersection) {
+        if (intersection && intersection.getAttrs().id !== "monthName") {
           if (draggingGoal.id !== intersection.attrs.id) {
             onMoveGoal(draggingGoal.id, intersection.attrs.id);
           } else {
@@ -69,7 +69,7 @@ export const Calendar = ({
     setDraggingGoal(undefined);
   };
 
-  const arcs = months.map((month, index) => {
+  const arcsAndMonthNames = months.map((month, index) => {
     const TEXT_WIDTH = STAGE_SIZE / 6;
     const TEXT_PADDING = TEXT_WIDTH / 10;
     const rotationDeg = INITIAL_ROTATION + index * SLICE_ANGLE;
@@ -87,6 +87,7 @@ export const Calendar = ({
           stroke="lightgray"
         />
         <Text
+          id="monthName"
           x={
             Math.cos(degToRad(rotationDeg + SLICE_ANGLE / 2)) *
             (SLICE_OUTER_RADIUS +
@@ -144,7 +145,7 @@ export const Calendar = ({
   return (
     <Stage width={STAGE_SIZE} height={STAGE_SIZE}>
       <Layer ref={mainLayerRef}>
-        {arcs}
+        {arcsAndMonthNames}
         {goals}
       </Layer>
       <Layer ref={helperLayerRef} />

@@ -29,20 +29,20 @@ let initialMonths: Months = {
   jan: { id: "jan", color: "#00429d", name: "January", goal: "" },
   feb: { id: "feb", color: "#505ba0", name: "February", goal: "" },
   mar: { id: "mar", color: "#7877a1", name: "March", goal: "" },
-  apr: { id: "apr", color: "#9a949e", name: "April", goal: "" },
-  may: { id: "may", color: "#b8b396", name: "May", goal: "" },
-  jun: { id: "jun", color: "#d1d583", name: "June", goal: "" },
-  jul: { id: "jul", color: "#e0d237", name: "July", goal: "" },
-  aug: { id: "aug", color: "#e7a547", name: "August", goal: "" },
-  sep: { id: "sep", color: "#e3794d", name: "September", goal: "" },
-  oct: { id: "oct", color: "#d44d4c", name: "October", goal: "" },
+  apr: { id: "apr", color: "#93003a", name: "April", goal: "" },
+  may: { id: "may", color: "#ba2146", name: "May", goal: "" },
+  jun: { id: "jun", color: "#d44d4c", name: "June", goal: "" },
+  jul: { id: "jul", color: "#00429d", name: "July", goal: "" },
+  aug: { id: "aug", color: "#505ba0", name: "August", goal: "" },
+  sep: { id: "sep", color: "#7877a1", name: "September", goal: "" },
+  oct: { id: "oct", color: "#93003a", name: "October", goal: "" },
   nov: { id: "nov", color: "#ba2146", name: "November", goal: "" },
-  dec: { id: "dec", color: "#93003a", name: "December", goal: "" },
+  dec: { id: "dec", color: "#d44d4c", name: "December", goal: "" },
 };
 
 const Container = styled.section`
   width: 600px;
-  background-color: palegoldenrod;
+  background-color: lightgray;
 `;
 
 const Form = styled.div`
